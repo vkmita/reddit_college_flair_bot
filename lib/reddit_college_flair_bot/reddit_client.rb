@@ -1,3 +1,3 @@
 class RedditClient
-  
+
 end
