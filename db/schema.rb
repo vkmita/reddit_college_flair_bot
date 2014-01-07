@@ -11,18 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107072319) do
+ActiveRecord::Schema.define(version: 20140107075059) do
 
   create_table "subreddits", force: true do |t|
     t.integer  "moderator_id"
-    t.integer  "user_id"
     t.string   "name",         limit: 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "subreddits", ["moderator_id"], name: "index_subreddits_on_moderator_id"
-  add_index "subreddits", ["user_id"], name: "index_subreddits_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "username",      limit: 20
