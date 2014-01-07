@@ -20,4 +20,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  user.error.invalid_reddit_credentials: 'This username/password combination does not work'

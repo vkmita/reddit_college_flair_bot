@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include BCrypt
 
   validates_presence_of :username, :password_hash
+  validates_length_of :username, :maximum => 20
   validates :reddit_credentials
 
   def password
@@ -13,9 +14,13 @@ class User < ActiveRecord::Base
     self.hashed_password = @password
   end
 
+  private
+
   def reddit_credentials
     client = Reddit::Client.new(self)
     response = client.login
-    errors.add(:username, 'This username/password combination does not work') unless response.code == 200
+    unless response.code == 200
+      errors.add(:username, I18n.t('user.errors.invalid_reddit_credentials'))
+    end
   end
 end
