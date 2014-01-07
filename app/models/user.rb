@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   include BCrypt
 
-  validates_presence_of :username, :hashed_password
+  validates_presence_of :username, :password_hash
   validates :reddit_credentials
 
   def password
-    @password ||= Password.new(hashed_password)
+    @password ||= Password.new(password_hash)
   end
 
   def password=(new_password)
