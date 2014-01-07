@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   def reddit_credentials
     client = Reddit::Client.new(self)
-    response = client.login
+    response = client.log_in
     unless response.code == 200
       errors.add(:username, I18n.t('user.errors.invalid_reddit_credentials'))
     end

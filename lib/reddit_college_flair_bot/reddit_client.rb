@@ -2,7 +2,7 @@ require 'snoo'
 
 module Reddit
   class Client
-    attr_reader :user, :client
+    attr_reader :user, :client, :log_in_response
 
     def initialize(user)
       @user = user
@@ -10,7 +10,11 @@ module Reddit
     end
 
     def log_in
-      client.log_in(user.username, user.password)
+      @log_in_response = client.log_in(user.username, user.password)
+    end
+
+    def logged_in?
+      log_in_response.code == 200
     end
   end
 end
