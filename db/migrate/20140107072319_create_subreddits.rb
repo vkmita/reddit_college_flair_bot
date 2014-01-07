@@ -1,7 +1,7 @@
 class CreateSubreddits < ActiveRecord::Migration
   def change
     create_table :subreddits do |t|
-      t.references{user} :moderator
+      t.references :moderator, :user, index: true
       t.string :name, limit: 20
 
       t.timestamps
