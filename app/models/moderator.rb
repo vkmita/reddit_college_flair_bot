@@ -15,7 +15,7 @@ class Moderator < User
 
   def can_moderate?(subreddit)
     response = client.get_modlog(subreddit, { :limit => 1 })
-    unless response.code == 200
+    if response.code != 200
       errors.add(:username, I18n.t('user.errors.invalid_reddit_credentials'))
     end
   end
@@ -28,7 +28,7 @@ class Moderator < User
 
   def reddit_credentials
     response = client.log_in
-    unless response.code == 200
+    if response.code != 200
       errors.add(:username, I18n.t('user.errors.invalid_reddit_credentials'))
     end
   end
