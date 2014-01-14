@@ -23,10 +23,16 @@ ActiveRecord::Schema.define(version: 20140107075059) do
   add_index "subreddits", ["moderator_id"], name: "index_subreddits_on_moderator_id"
 
   create_table "users", force: true do |t|
-    t.string   "username",      limit: 20
+    t.string   "username",             limit: 20
     t.string   "password_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
+
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
 
 end
