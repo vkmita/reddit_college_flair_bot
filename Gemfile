@@ -13,4 +13,6 @@ gem 'unicorn'
 gem 'devise'
 
 # Reddit Client
+gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git'
+gem 'omniauth-oauth2'
 gem 'snoo'
