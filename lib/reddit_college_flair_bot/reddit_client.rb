@@ -6,7 +6,10 @@ module Reddit
 
     def initialize(user)
       @user = user
-      @client = Snoo::Client.new
+    end
+
+    def client
+      @client ||= Snoo::Client.new
     end
 
     def log_in
