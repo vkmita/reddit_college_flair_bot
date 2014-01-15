@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
   has_many :subreddits
   has_many :authentications
 
-
   devise :confirmable
 end

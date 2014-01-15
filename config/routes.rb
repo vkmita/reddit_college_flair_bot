@@ -1,6 +1,7 @@
 RedditCollegeFlairBot::Application.routes.draw do
   resources :authentications
 
+  resources :users
   devise_for :users
   get '/auth/:provider/callback' => 'authentications#create'
   post '/auth/:provider/callback' => 'authentications#create'

@@ -21,4 +21,4 @@
 
 en:
   user.error.invalid_reddit_credentials: 'This username/password combination does not work'
-  controller.authentication.login.successful: 'Hey! Welcome {{username}}'
+  controller.authentication.reddit.callback.successful: 'Hey! Welcome {{username}}'

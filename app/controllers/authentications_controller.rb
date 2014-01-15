@@ -1,18 +1,14 @@
 class AuthenticationsController < ApplicationController
-  before_filter
-
-  def index
-    @authentications = current_user.try(:authentications)
-  end
 
   def create
-    redirect_to new_user_path unless current_user
-    omniauth = request.env["omniauth.auth"]
-    authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    @authentication = Authentication.new({ :provider => omniauth_provider, :uid => omniauth_uid })
+
+    flash[:notice] = I18n.t('controller.authentication.login.successful', :username => current_user.username)
+    render 'users/new'
 
     if authentication
       login(authentication.user)
-      flash[:notice] = I18n.t('controller.authentication.login.successful', :username => current_user.username)
+
       redirect_to subreddits_path
     elsif current_user
       current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
@@ -36,5 +32,15 @@ class AuthenticationsController < ApplicationController
     @authentication.destroy
     flash[:notice] = 'Successfully destroyed authentication.'
     redirect_to authentications_url
+  end
+
+  private
+
+  def omniauth_provider
+    request.env['omniauth.auth']['provider']
+  end
+
+  def omniauth_uid
+    request.env['omniauth.auth']['provider']
   end
 end
