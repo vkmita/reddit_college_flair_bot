@@ -1,7 +1,7 @@
 class CreateAuthentications < ActiveRecord::Migration
   def change
     create_table :authentications do |t|
-      t.reference :user
+      t.integer :user_id
       t.string :provider
       t.string :uid
 

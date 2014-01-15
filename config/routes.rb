@@ -2,6 +2,10 @@ RedditCollegeFlairBot::Application.routes.draw do
   resources :authentications
 
   devise_for :users
+  get '/auth/:provider/callback' => 'authentications#create'
+  post '/auth/:provider/callback' => 'authentications#create'
+  put '/auth/:provider/callback' => 'authentications#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
