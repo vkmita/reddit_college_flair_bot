@@ -1,4 +1,4 @@
-class RemoveModeratorIdFromSubbredits < ActiveRecord::Migration
+class RemoveUserIdFromSubbredits < ActiveRecord::Migration
   def self.up
     remove_column :subreddits, :user_id
   end
