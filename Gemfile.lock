@@ -160,7 +160,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 1.2)
   jquery-rails
-  omniauth-oauth2
+  omniauth
   omniauth-reddit!
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
