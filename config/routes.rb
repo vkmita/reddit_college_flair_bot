@@ -14,6 +14,7 @@ RedditCollegeFlairBot::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  get '/auth/:provider/callback', :to => 'sessions#create'
 
   # Example resource route with options:
   #   resources :products do
