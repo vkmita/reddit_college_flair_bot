@@ -1,9 +1,12 @@
 class AuthenticationsController < ApplicationController
+  before_filter
+
   def index
     @authentications = current_user.try(:authentications)
   end
 
   def create
+    redirect_to new_user_path unless current_user
     omniauth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
 
@@ -19,7 +22,7 @@ class AuthenticationsController < ApplicationController
       user = User.new
       user.apply_omniauth(omniauth)
       if user.save
-        flash[:notice] = "Signed in successfully."
+        flash[:notice] = 'Signed in successfully.'
         sign_in_and_redirect(:user, user)
       else
         session[:omniauth] = omniauth.except('extra')
