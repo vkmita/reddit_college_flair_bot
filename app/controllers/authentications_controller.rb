@@ -1,7 +1,7 @@
 class AuthenticationsController < ApplicationController
 
   def create
-    @authentication = Authentication.new({ :provider => omniauth_provider, :uid => omniauth_uid })
+    authentication = Authentication.new({ :provider => omniauth_provider, :uid => omniauth_uid })
 
     flash[:notice] = I18n.t('controller.authentication.login.successful', :username => current_user.username)
     render 'users/new'
