@@ -2,7 +2,7 @@ class Moderator < User
   include BCrypt
 
   validates_presence_of :password_hash
-  validates :reddit_credentials
+  validates :validate_reddit_credentials
 
   def password
     @password ||= Password.new(password_hash)
@@ -26,7 +26,7 @@ class Moderator < User
     @client ||= Reddit::Client.new(self)
   end
 
-  def reddit_credentials
+  def validate_reddit_credentials
     response = client.log_in
     if response.code != 200
       errors.add(:username, I18n.t('user.errors.invalid_reddit_credentials'))
