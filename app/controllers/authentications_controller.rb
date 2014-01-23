@@ -1,7 +1,12 @@
 class AuthenticationsController < ApplicationController
 
   def create
-    @authentication = Authentication.new({ :provider => omniauth_provider, :uid => omniauth_uid })
+    @authentication = Authentication.new({ :provider => params[:provider], :uid => params[:code] })
+
+    @authentication.save!
+
+    puts "\n\n\n#{request.env.inspect}\n\n\n"
+    puts params.inspect
 
     flash[:notice] = I18n.t('controller.authentication.login.successful', :username => current_user.username)
 
@@ -33,15 +38,5 @@ class AuthenticationsController < ApplicationController
     @authentication.destroy
     flash[:notice] = 'Successfully destroyed authentication.'
     redirect_to authentications_url
-  end
-
-  private
-
-  def omniauth_provider
-    request.env['omniauth.auth']['provider']
-  end
-
-  def omniauth_uid
-    request.env['omniauth.auth']['provider']
   end
 end
