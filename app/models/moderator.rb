@@ -2,7 +2,7 @@ class Moderator < User
   include BCrypt
 
   validates_presence_of :password_hash
-  validates :validate_reddit_credentials
+  validate :validate_reddit_credentials
 
   def password
     @password ||= Password.new(password_hash)
