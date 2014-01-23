@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
     puts "\n\n\n#{request.env['omniauth.auth']}\n\n\n"
     puts params.inspect
 
-    flash[:notice] = I18n.t('controller.authentication.login.successful', :username => current_user.username)
+    #flash[:notice] = I18n.t('controller.authentication.login.successful', :username => current_user.username)
 
     render 'subreddits/index'
 
