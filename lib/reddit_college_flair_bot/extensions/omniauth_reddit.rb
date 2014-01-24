@@ -1,0 +1,24 @@
+module OmniAuth
+  module Strategies
+    class Reddit < OmniAuth::Strategies::OAuth2
+      extra do
+        {
+          'username' => raw_info['name'],
+          'subreddits' => { 'subscriber' => subscriber_subreddits, 'moderator' => moderator_subreddits }
+        }
+      end
+
+      def username
+        @username ||= raw_info['name']
+      end
+
+      def subscriber_subreddits
+        @subscriber_subreddits ||= access_token.get('/subreddits/mine/subscriber').parsed || {}
+      end
+
+      def moderator_subreddits
+        @moderator_subreddits ||= access_token.get('/subreddits/mine/moderator').parsed || {}
+      end
+    end
+  end
+end

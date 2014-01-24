@@ -1,2 +1,8 @@
 <%= "#{params.inspect}" %>
 <%= @authentication.inspect %>
+
+<%= "Hi #{request.env['omniauth.auth']['extra']['username']}"%>
+
+<%= "You are subscribed to  #{request.env['omniauth.auth']['extra']['subreddits']['subscriber'].inspect}"%>
+
+<%= "You moderate #{request.env['omniauth.auth']['extra']['subreddits']['moderator'].inspect}"%>
