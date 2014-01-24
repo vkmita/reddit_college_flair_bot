@@ -6,6 +6,11 @@ class AuthenticationsController < ApplicationController
     @authentication.save!
 
     puts "\n\n\n#{request.env['omniauth.auth']}\n\n\n"
+    puts "\n\n\n#{request.env['omniauth.auth']['extra']}\n\n\n"
+    puts "\n\n\n#{request.env['omniauth.auth']['extra']['username']}\n\n\n"
+    puts "\n\n\n#{request.env['omniauth.auth']['extra']['subreddits']}\n\n\n"
+
+
     puts params.inspect
 
     #flash[:notice] = I18n.t('controller.authentication.login.successful', :username => current_user.username)
