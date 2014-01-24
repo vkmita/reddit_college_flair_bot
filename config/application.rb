@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-require File.expand_path('../../../lib/reddit_college_flair_bot/extensions/omniauth_reddit', __FILE__)
 
 require 'rails/all'
 require 'bcrypt'
