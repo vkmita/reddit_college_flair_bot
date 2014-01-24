@@ -1,4 +1,4 @@
-module OmniAuth::Strategies::Reddit.class_eval do
+OmniAuth::Strategies::Reddit.class_eval do
   extra do
     {
         'username' => raw_info['name'],
@@ -17,6 +17,4 @@ module OmniAuth::Strategies::Reddit.class_eval do
   def moderator_subreddits
     @moderator_subreddits ||= access_token.get('/subreddits/mine/moderator').parsed || {}
   end
-end
-
 end
