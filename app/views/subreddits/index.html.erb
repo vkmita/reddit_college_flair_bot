@@ -1,7 +1,15 @@
 <%= "#{params.inspect}" %>
 <%= @authentication.inspect %>
 
-<%= "Hi #{request.env['omniauth.auth']['extra']['username']}"%>
+<%= puts request.env['omniauth.auth']
+    "#{request.env['omniauth.auth']}"
+%>
+
+<%= puts request.env['omniauth.auth']['extra'] %>
+
+<%= puts "Hi #{request.env['omniauth.auth']['extra']['username']}"
+    "Hi #{request.env['omniauth.auth']['extra']['username']}"
+%>
 
 <%= "You are subscribed to  #{request.env['omniauth.auth']['extra']['subreddits']['subscriber'].inspect}"%>
 
