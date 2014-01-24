@@ -1,4 +1,4 @@
-module OmniAuth:: Strategies::Reddit.class_eval do
+module OmniAuth::Strategies::Reddit.class_eval do
   extra do
     {
         'username' => raw_info['name'],
