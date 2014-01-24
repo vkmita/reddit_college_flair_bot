@@ -1,4 +1,3 @@
-require File.expand_path('../../../lib/reddit_college_flair_bot/extensions/omniauth_reddit.rb', __FILE__)
 
 class AuthenticationsController < ApplicationController
 
