@@ -13,6 +13,6 @@ gem 'devise'
 gem 'mysql2'
 
 # Reddit Client
-gem 'omniauth-reddit', :github => 'vkmita/omniauth-reddit'
+gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git' #:github => 'vkmita/omniauth-reddit'
 gem 'omniauth'
 gem 'snoo'
