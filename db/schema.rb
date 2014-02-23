@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140115052958) do
     t.datetime "updated_at"
   end
 
-  add_index "subreddits", ["moderator_id"], name: "index_subreddits_on_moderator_id"
+  add_index "subreddits", ["moderator_id"], name: "index_subreddits_on_moderator_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",             limit: 20
@@ -41,6 +41,6 @@ ActiveRecord::Schema.define(version: 20140115052958) do
     t.string   "unconfirmed_email"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
 
 end
