@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/vkmita/omniauth-reddit.git
-  revision: a13afc891e45b259b1bd37ebe11d64290b30e1b2
+  revision: c0b6355b75ef0abf77a5b036beade6b4ba1e1744
   specs:
     omniauth-reddit (0.0.1)
       omniauth-oauth2 (~> 1.1)
