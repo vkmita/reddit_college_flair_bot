@@ -6,10 +6,10 @@ class AuthenticationsController < ApplicationController
 
     @authentication.save!
 
-    Rails.logger.info "\n\n\n#{request.env['omniauth.auth']}\n\n\n"
-    Rails.logger.info "\n\n\n#{request.env['omniauth.auth']['extra']}\n\n\n"
-    Rails.logger.info "\n\n\n#{request.env['omniauth.auth']['extra']['username']}\n\n\n"
-    Rails.logger.info "\n\n\n#{request.env['omniauth.auth']['extra']['subreddits']}\n\n\n"
+    #Rails.logger.info "\n\n\n#{request.env['omniauth.auth']}\n\n\n"
+    #Rails.logger.info "\n\n\n#{request.env['omniauth.auth']['extra']}\n\n\n"
+    #Rails.logger.info "\n\n\n#{request.env['omniauth.auth']['extra']['username']}\n\n\n"
+    #Rails.logger.info "\n\n\n#{request.env['omniauth.auth']['extra']['subreddits']}\n\n\n"
 
 
     puts params.inspect
