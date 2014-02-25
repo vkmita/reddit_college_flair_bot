@@ -1,8 +1,8 @@
 GIT
-  remote: git://github.com/jackdempsey/omniauth-reddit.git
-  revision: 893cb926432f9f1293179b506999dc2155435aef
+  remote: git://github.com/vkmita/omniauth-reddit.git
+  revision: 4bd8e27af3e73c81f82f7e03c8273e27c2ddb338
   specs:
-    omniauth-reddit (0.0.2)
+    omniauth-reddit (0.0.1)
       omniauth-oauth2 (~> 1.1)
 
 GEM
