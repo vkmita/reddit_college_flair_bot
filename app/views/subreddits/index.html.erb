@@ -1,12 +1,24 @@
 <%= "#{params.inspect}" %>
 <%= @authentication.inspect %>
 
-<%= puts request.env['omniauth.auth']
-    "#{request.env['omniauth.auth']}"
-%>
+<br />
+<br />
+<br />
 
-<%= puts request.env['omniauth.auth']['extra'] %>
+<%= "#{request.env['omniauth.auth']['extra']['moderator']}" %>
 
-<%= puts "Hi #{request.env['omniauth.auth']['extra']['username']}"
-    "Hi #{request.env['omniauth.auth']['extra']['username']}"
-%>
+<br />
+<br />
+<br />
+
+<%= "#{request.env['omniauth.auth']['extra']}" %>
+
+<br />
+<br />
+<br />
+
+<%= "#{request.env['omniauth.auth']['extra']['moderator']}" %>
+
+<br />
+<br />
+<br />

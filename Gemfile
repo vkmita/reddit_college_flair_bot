@@ -11,6 +11,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'unicorn'
 gem 'devise'
 gem 'mysql2'
+gem 'debugger'
 
 # Reddit Client
 gem 'omniauth-reddit', :github => 'vkmita/omniauth-reddit' #:git => 'git://github.com/jackdempsey/omniauth-reddit.git' #
