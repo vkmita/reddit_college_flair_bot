@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+  before_filter :record_authentication, :only => :create
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      login(@user)
-      redirect_to root_url, :notice => "Signed up!"
-    else
-      render "new"
-    end
+    user = User.initialize_by_omniauth_hash(omniauth_hash)
+    login(user)
+    render 'subreddits/index'
   end
+
+  private
+
+  def omniauth_hash
+    @omniauth_hash ||= request.env['omniauth.auth']
+  end
+
+  def record_authentication
+    Authentication.create!({ :provider => params[:provider], :uid => params[:code] })
+  end
+
 end

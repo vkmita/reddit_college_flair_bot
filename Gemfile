@@ -16,4 +16,4 @@ gem 'debugger'
 # Reddit Client
 gem 'omniauth-reddit', :github => 'vkmita/omniauth-reddit' #:git => 'git://github.com/jackdempsey/omniauth-reddit.git' #
 gem 'omniauth'
-gem 'snoo'
+gem "twitter-bootstrap-rails"

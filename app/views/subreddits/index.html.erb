@@ -1,24 +1,6 @@
-<%= "#{params.inspect}" %>
-<%= @authentication.inspect %>
 
-<br />
-<br />
-<br />
+<% @subreddits_subscribed.each do |subreddit_name| %>
+  <div>
 
-<%= "#{request.env['omniauth.auth']['extra']['moderator']}" %>
-
-<br />
-<br />
-<br />
-
-<%= "#{request.env['omniauth.auth']['extra']}" %>
-
-<br />
-<br />
-<br />
-
-<%= "#{request.env['omniauth.auth']['extra']['moderator']}" %>
-
-<br />
-<br />
-<br />
+  </div>
+<% end %>

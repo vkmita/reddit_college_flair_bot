@@ -1,17 +1,11 @@
 class SessionsController < ApplicationController
 
-  def new
-  end
+  before_filter :record_authentication, :only => :create
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_url, :notice => "Logged in!"
-    else
-      flash.now.alert = "Invalid email or password"
-      render "new"
-    end
+    user = User.initialize_by_omniauth_hash(omniauth_hash)
+    login(user)
+    render
   end
 
   def destroy
@@ -19,4 +13,13 @@ class SessionsController < ApplicationController
     redirect_to root_url, :notice => "Logged out!"
   end
 
+  private
+
+  def omniauth_hash
+    @omniauth_hash ||= request.env['omniauth.auth']
+  end
+
+  def record_authentication
+    Authentication.create!({ :provider => params[:provider], :uid => params[:code] })
+  end
 end
