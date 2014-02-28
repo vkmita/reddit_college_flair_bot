@@ -16,5 +16,4 @@ class UsersController < ApplicationController
   def record_authentication
     Authentication.create!({ :provider => params[:provider], :uid => params[:code] })
   end
-
 end
