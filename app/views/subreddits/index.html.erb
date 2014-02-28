@@ -1,6 +1,20 @@
+<div class="row">
+  <% if @subreddits_moderated.any? %>
+    <span>Please choose one of your college subreddits</span>
+    <% @subreddits_moderated.each do |subreddit_name| %>
+      <div class="span6 subscribed">
+        <button>subreddit_name</button>
+      </div>
+    <% end %>
+  <% end %>
 
-<% @subreddits_subscribed.each do |subreddit_name| %>
-  <div>
+  <% @subreddits_moderated.each do |subreddit_name| %>
+    <div class="span6 subscribed">
+      <span>Please choose </span>
+    </div>
+  <% end %>
+
+  <div class="span6 moderated">
 
   </div>
-<% end %>
+</div>
