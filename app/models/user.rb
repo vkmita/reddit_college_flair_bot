@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     username = username(omniauth_hash)
     user = find_by_username(username) || create!(:username => username)
     user.omniauth_hash = omniauth_hash
+    debugger
     user
   end
 
