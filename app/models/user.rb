@@ -7,13 +7,13 @@ class User < ActiveRecord::Base
 
   devise :confirmable
 
+  attr_writer :email
   attr_accessor :omniauth_hash
 
   def self.initialize_by_omniauth_hash(omniauth_hash)
     username = username(omniauth_hash)
     user = find_by_username(username) || create!(:username => username)
     user.omniauth_hash = omniauth_hash
-    debugger
     user
   end
 
@@ -21,15 +21,15 @@ class User < ActiveRecord::Base
     omniauth_hash.info.name
   end
 
-  def subreddits_modrated
-    omniauth_hash.info.moderator.data.children.map {|c| c.data.display_name}
+  def subreddits_moderated
+    omniauth_hash && omniauth_hash.info.moderator.data.children.map {|c| c.data.display_name}
   end
 
   def subreddits_subscribed
-    omniauth_hash.info.subscriber.data.children.map {|c| c.data.display_name}
+    omniauth_hash && omniauth_hash.info.subscriber.data.children.map {|c| c.data.display_name}
   end
 
-  def email
-    ''
+  def email # for device
+    @email || ''
   end
 end

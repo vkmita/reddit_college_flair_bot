@@ -1,18 +1,26 @@
-<div class="row">
-  <% if @subreddits_moderated.any? %>
-    <span>Please a college subreddit to create bot for</span>
-    <% @subreddits_moderated.each do |subreddit_name| %>
-      <div class="span6 subscribed">
+<div class="container row">
+  <% if current_user.subreddits_moderated.any? %>
+
+      <div class="span6 moderated">
+        <p>
+          <span>Please a college subreddit to create bot for</span>
+        </p>
+        <% current_user.subreddits_moderated.each do |subreddit_name| %>
         <button class="btn btn-primary"><%= subreddit_name %></button>
+        <% end %>
       </div>
-    <% end %>
   <% end %>
 
-  <!--<% @subreddits_moderated.each do |subreddit_name| %>-->
-    <!--<div class="span6 subscribed">-->
-      <!--<span>Please choose </span>-->
-    <!--</div>-->
-  <!--<% end %>-->
+  <% if current_user.subreddits_subscribed.any? %>
+      <div class="span6 subscribed">
+        <p>
+          <span>Please choose a college subreddit</span>
+        </p>
+        <% current_user.subreddits_subscribed.each do |subreddit_name| %>
+            <button class="btn btn-primary"><%= subreddit_name %></button>
+        <% end %>
+      </div>
+  <% end %>
 
   <div class="span6 moderated">
 

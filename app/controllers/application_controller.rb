@@ -6,14 +6,15 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= session[:user]
+    @current_user ||= User.find(session[:user_id])
   end
 
   def login(user)
-    session[:user] = user
+    @current_user = user
+    session[:user_id] = user.id
   end
 
   def logout
-    session[:user] = @current_user = nil
+    session[:user_id] = @current_user = nil
   end
 end
