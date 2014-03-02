@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def create
     user = User.initialize_by_omniauth_hash(omniauth_hash)
     login(user)
+    @subreddits_moderated = user.subreddits_modrated
     render 'subreddits/index'
   end
 

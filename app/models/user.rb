@@ -10,19 +10,25 @@ class User < ActiveRecord::Base
   attr_accessor :omniauth_hash
 
   def self.initialize_by_omniauth_hash(omniauth_hash)
-    self.omniauth_hash = omniauth_hash
-    find_by_username(username) || create!(:username => username)
+    username = username(omniauth_hash)
+    user = find_by_username(username) || create!(:username => username)
+    user.omniauth_hash = omniauth_hash
+    user
   end
 
-  def username
+  def self.username(omniauth_hash)
     omniauth_hash.info.name
   end
 
-  def subreddits_moderated
+  def subreddits_modrated
     omniauth_hash.info.moderator.data.children.map {|c| c.data.display_name}
   end
 
   def subreddits_subscribed
     omniauth_hash.info.subscriber.data.children.map {|c| c.data.display_name}
+  end
+
+  def email
+    ''
   end
 end
