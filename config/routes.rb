@@ -2,11 +2,12 @@ RedditCollegeFlairBot::Application.routes.draw do
   resources :authentications
 
   get '/' => 'home#index'
-  resources :users
   devise_for :users
   get '/auth/:provider/callback' => 'users#create'
   post '/auth/:provider/callback' => 'user#create'
   put '/auth/:provider/callback' => 'users#create'
+  get '/r/:subreddit_name/create' => 'subreddits#new'
+  get '/r/new' => 'subreddits#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -22,7 +23,7 @@ RedditCollegeFlairBot::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  get '/auth/:provider/callback', :to => 'users#create'
+  get '/auth/:provider/callback', to: 'users#create'
 
   # Example resource route with options:
   #   resources :products do
